@@ -1,0 +1,1 @@
+cmd='/Applications/CMake.app/Contents/bin/cmake;-DCMAKE_TOOLCHAIN_FILE=/Users/Technaharia/Downloads/Thrift-Test/cmake-iostoolchain/ios.toolchain.cmake;-DPLATFORM=OS64;-DCMAKE_BUILD_TYPE=Release;-GUnix Makefiles;-C<TMP_DIR>/LibCore-cache-$<CONFIG>.cmake;-S;<SOURCE_DIR><SOURCE_SUBDIR>;-B;<BINARY_DIR>'

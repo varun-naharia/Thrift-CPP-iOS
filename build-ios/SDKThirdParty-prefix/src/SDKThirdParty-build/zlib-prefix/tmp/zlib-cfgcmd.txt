@@ -1,0 +1,1 @@
+cmd='/Applications/CMake.app/Contents/bin/cmake;-S;<SOURCE_DIR>;-B;<BINARY_DIR>;-DCMAKE_BUILD_TYPE=Release;-DCMAKE_TOOLCHAIN_FILE=/Users/Technaharia/Downloads/Thrift-Test/ThirdParty/cmake-iostoolchain/ios.toolchain.cmake;-DPLATFORM=OS64;-DCMAKE_INSTALL_PREFIX=/Users/Technaharia/Downloads/Thrift-Test/build-ios/staging'

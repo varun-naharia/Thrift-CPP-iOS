@@ -1,0 +1,2 @@
+
+set(THRIFT_LINK_LIBRARIES "" CACHE STRING "Initial cache" FORCE)

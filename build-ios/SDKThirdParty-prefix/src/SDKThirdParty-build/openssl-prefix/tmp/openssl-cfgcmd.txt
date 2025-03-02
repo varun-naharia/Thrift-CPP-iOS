@@ -1,0 +1,1 @@
+cmd='/Users/Technaharia/Downloads/Thrift-Test/ThirdParty/openssl-1.1.1c/Configure;ios64-cross;--prefix=<INSTALL_DIR>;no-asm'
