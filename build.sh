@@ -2,6 +2,7 @@
 
 # Define the build directories
 BUILD_DIR="build"
+BUILD_MAC_DIR="build-mac"
 BUILD_IOS_DIR="build-ios"
 BUILD_LINUX_DIR="build-linux"
 BUILD_ANDROID_DIR="build-android"
@@ -197,7 +198,7 @@ clean_build_directory() {
 
 build_mac_project() {
     echo "Building for macOS..."
-    clean_build_directory "$BUILD_DIR"
+    clean_build_directory "$BUILD_MAC_DIR"
     mkdir "$BUILD_DIR"
     cd "$BUILD_DIR" || exit
     echo "Running CMake for macOS..."

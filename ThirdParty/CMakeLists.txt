@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_COMPILER "xcrun clang")
 
-set(IOS_CMAKE_DIR ${CMAKE_SOURCE_DIR}/cmake-iostoolchain)
+set(IOS_CMAKE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake-iostoolchain)
 
 # Set the source and build directories
 set(OPENSSL_DIR openssl-1.1.1c)
@@ -270,6 +270,13 @@ ExternalProject_Add(thrift
         SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${THRIFT_DIR}
         INSTALL_DIR ${THIRDPARTY_INSTALL_DIR}
         CMAKE_ARGS ${EXTERNAL_PROJECT_CMAKE_ARGS}
+            -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+            -DCMAKE_CXX_FLAGS="-std=c++11"
+            -DCMAKE_C_FLAGS="-std=c11"
+            -DCMAKE_CXX_STANDARD=11
+            -DCMAKE_C_STANDARD=11
+            # -DCMAKE_EXE_LINKER_FLAGS="-framework System -framework Security -framework Foundation -L${THIRDPARTY_INSTALL_DIR}/lib"
+            -DOPENSSL_INCLUDE_DIR=${OPENSSL_INSTALL_DIR}/include
             -DOPENSSL_ROOT_DIR=${OPENSSL_INSTALL_DIR}
             -DOPENSSL_CRYPTO_LIBRARY=${OPENSSL_INSTALL_DIR}/lib/libcrypto.1.1.dylib
             -DOPENSSL_SSL_LIBRARY=${OPENSSL_INSTALL_DIR}/lib/libssl.1.1.dylib
@@ -309,11 +316,12 @@ ExternalProject_Add(thrift
             -DCMAKE_CXX_STANDARD=17
             -DCMAKE_EXE_LINKER_FLAGS=-lz
             -DCMAKE_SHARED_LINKER_FLAGS=-lz
-        CMAKE_CACHE_ARGS
-            -DTHRIFT_LINK_LIBRARIES:STRING=${THRIFT_LINK_LIBRARIES}
-            BUILD_COMMAND make clean && make CFLAGS+=-DOPENSSL_NO_SSL3 CFLAGS+=-fPIC CXXFLAGS+=-DOPENSSL_NO_SSL3 CXXFLAGS+=-fPIC
+
+        BUILD_COMMAND make clean && make CFLAGS+=-DOPENSSL_NO_SSL3 CFLAGS+=-fPIC CXXFLAGS+=-DOPENSSL_NO_SSL3 CXXFLAGS+=-fPIC
         INSTALL_COMMAND make install
     )
+
+    add_dependencies(thrift boost openssl zlib)
 ExternalProject_Add_Step(thrift
     fixinstallname
     COMMAND ${CMAKE_INSTALL_NAME_TOOL} -id "@rpath/libthrift.0.21.0.dylib" <INSTALL_DIR>/lib/libthrift.0.21.0.dylib

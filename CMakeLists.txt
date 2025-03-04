@@ -7,7 +7,7 @@ project(ThriftTest)
 # Specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(IOS_CMAKE_DIR ${CMAKE_SOURCE_DIR}/cmake-iostoolchain)
+set(IOS_CMAKE_DIR ${CMAKE_SOURCE_DIR}/ThirdParty/cmake-iostoolchain)
 
 
 # Include ExternalProject module
